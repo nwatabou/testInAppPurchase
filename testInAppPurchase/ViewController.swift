@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import SwiftyStoreKit
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        SwiftyStoreKit.retrieveProductsInfo(["testA_600fight"], completion: { result in
+            guard let products = result.retrievedProducts.first else {
+                return
+            }
+            print(products.discounts)
+            print(products.price)
+            print(products.localizedDescription)
+        })
     }
 
 
